@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    // Add your build commands here
+                    echo 'Building...'
+                }
+            }
+        }
+
+        stage('Destroy') {
+            steps {
+                script {
+                    // Add your destroy commands here
+                    echo 'Destroying...'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
