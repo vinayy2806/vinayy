@@ -16,7 +16,7 @@ resource "aws_instance" "admin"{
       delete_on_termination = true
     }
     tags = {
-      Name = "Microk8s"
+      Name = "testing"
     }   
 }    
 output "public_ip" {
