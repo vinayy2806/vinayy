@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+    parameters {
+        booleanParam(name: 'APPLY', defaultValue: false, description: 'Apply the Terraform configuration')
+        booleanParam(name: 'DESTROY', defaultValue: false, description: 'Destroy the Terraform configuration')
+    }
+
     stages {
         stage('Checkout') {
             steps {
@@ -17,11 +22,26 @@ pipeline {
             }
         }
 
+        stage('Apply') {
+            when {
+                expression { params.APPLY }
+            }
+            steps {
+                script {
+                    // Add your apply commands here
+                    echo 'Applying Terraform configuration...'
+                }
+            }
+        }
+
         stage('Destroy') {
+            when {
+                expression { params.DESTROY }
+            }
             steps {
                 script {
                     // Add your destroy commands here
-                    echo 'Destroying...'
+                    echo 'Destroying Terraform configuration...'
                 }
             }
         }
