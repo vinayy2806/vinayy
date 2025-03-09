@@ -1,7 +1,7 @@
 provider "aws" {
     region = "us-east-1"
-    access_key = ""
-    secret_key = ""
+    access_key = "4U"
+    secret_key = "4y0c6a4YKwR"
 
 }
 
@@ -9,18 +9,17 @@ resource "aws_instance" "admin"{
     ami = "ami-0ff20c640f06d85cf"
     instance_type = "t2.medium"
     security_groups = [ "default" ]
-    key_name = ""
+    key_name = "project"
     root_block_device {
       volume_size = 20
       volume_type = "gp2"
       delete_on_termination = true
     }
     tags = {
-      Name = "testing"
+      Name = "admin"
     }   
 }    
 output "public_ip" {
     value = aws_instance.admin.public_ip
-
 
 }

@@ -1,0 +1,35 @@
+pipeline 
+{
+    agent any 
+    stages
+    { 
+        stage('Checkout') 
+        {
+            steps 
+            {
+                git branch: 'code', url: 'https://github.com/vinayy2806/vinayy.git'
+            }
+        }
+        stage('Build') 
+        {
+            steps 
+            {
+                script 
+                {
+                    echo 'Building...'
+                }
+            }
+        }
+        stage('Destroy') 
+        {
+            steps 
+            {
+                script 
+                {
+                    echo 'Destroying...'
+                }
+            }
+        }
+
+    }
+}    
